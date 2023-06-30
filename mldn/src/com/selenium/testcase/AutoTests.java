@@ -53,6 +53,7 @@ public class AutoTests {
 
   @AfterSuite
   public void afterSuite() {
+	  
   }
 
 }

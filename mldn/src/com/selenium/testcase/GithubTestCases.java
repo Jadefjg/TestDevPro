@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -46,7 +47,8 @@ public class GithubTestCases {
 			File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(file,new File("images/testfanloginfailure.png"));
 			Reporter.log("<a href=../images/testfanloginfailure.png target-_blank>失败</a>");
-			Reporter.log("<img src=../images/testfanloginfailure.png style=witdth:30,>失败</a>");
+			Reporter.log("<img src=../images/testfanloginfailure.png style=witdth:30,height:30px>失败</a>");
+			Assert.fail(e.getMessage());
 		}
 		
 	}

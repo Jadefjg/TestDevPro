@@ -72,12 +72,16 @@ public class TestfanTests{
 		
 		// 选省份
 		Select province = new Select(driver.findElement(By.cssSelector("#province")));
-		province.selectByVisibleText("山西");
+		int i = (int) (Math.random()*province.getOptions().size());
+//		province.selectByVisibleText("山西");
+		province.selectByIndex(i);
 		
 		
 		// 城市
 		Select city = new Select(driver.findElement(By.cssSelector("#city")));
-		city.selectByVisibleText("太原");
+		int j = (int) (Math.random()*province.getOptions().size());
+//		city.selectByVisibleText("太原");
+		city.selectByIndex(j);
 		
 		// 提交
 		driver.findElement(By.cssSelector(".btn.btn-xl.btn-primary.profile-sub")).click();

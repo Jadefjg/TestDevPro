@@ -43,29 +43,22 @@ public class TestfanTestCases {
 		driver.get("http://ask/testfan.cn/");
 	}
 	
-//	@AfterMethod
-//	public void homepage() {
-//		
-//	}
-	
 	@Test
 	public void test001_login() throws Exception{
 		try {
 			testfan.login();
-			Assert.assertEquals(Utils.elementIsExist(driver, By.cssSelector("#unread_messages"), true);
+			Boolean flag = Utils.elementIsExist(driver, By.cssSelector("#unread_messages"));
+			Assert.assertEquals(true,flag);
 		}catch(Exception | Error e){
 			File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(file,new File("images/testfanloginfailure.png"));
 			Assert.fail(e.getMessage());
 		}
-		
 	}
-
 	
 	// 修改用户信息
-	@Test
-	public void changePersonInfo(){
-		
+	@Test(dependsOnMethods = "test001_login")
+	public void changePersonInfo() throws Exception{
 		try{
 			testfan.changePersonInfo();
 		} catch (Exception | Error e) {
@@ -74,7 +67,6 @@ public class TestfanTestCases {
 			Assert.fail(e.getMessage());
 		}	
 	}
-	
 	
 	// 修改评论
 	@Test(dependsOnMethods = "test001_login")
@@ -87,7 +79,7 @@ public class TestfanTestCases {
 			Assert.fail(e.getMessage());
 		}
 	}
-		
+	
 	@AfterClass
 	public void quit() {
 		driver.quit();
